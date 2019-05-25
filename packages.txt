@@ -1,0 +1,24 @@
+# Uninstalls the Elmah package from the default project
+Uninstall-Package Elmah
+
+# Uninstalls the Elmah package and all its unused dependencies
+Uninstall-Package Elmah -RemoveDependencies 
+
+# Uninstalls the Elmah package even if another package depends on it
+Uninstall-Package Elmah -Force
+
+---------------------------------------------------
+
+Install-Package EntityFramework -Version 6.2.0 
+
+Install-Package bootstrap -Version 3.3.7 
+
+Install-Package MD.BootstrapPersianDateTimePicker -Version 2.3.1 
+
+Install-Package TinyMCE.MVC -Version 3.4.7 
+
+Install-Package PagedList.Mvc -Version 4.5.0 
+
+Install-Package Grid.Mvc -Version 3.0.0 
+
+

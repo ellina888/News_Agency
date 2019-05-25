@@ -1,0 +1,16 @@
+﻿@model IEnumerable<DAl.Page>
+
+<h2>خبر های مشابه @*<i class="fa fa-thumbs-o-down"></i>*@</h2>
+<br />
+<ul class="spost_nav wow fadeInDown animated">
+    @foreach (var item in Model)
+    {
+        <li>
+            <div class="media">
+                <a class="media-left" href="single_page.html"> <img src=@Url.Content(item.ImagePath) alt=""> </a>
+                <div class="media-body"> <a class="catg_title" href="single_page.html"> @item.PageTitle</a> </div>
+            </div>
+        </li>
+    }
+</ul>
+

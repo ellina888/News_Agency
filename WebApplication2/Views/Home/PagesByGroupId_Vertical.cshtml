@@ -1,0 +1,34 @@
+﻿@model IEnumerable<DAl.Page>
+
+<div class="single_post_content">
+    <div class="single_post_content">
+        <h2><span>@Model.FirstOrDefault().PageGroup.GroupTitle</span></h2>
+        <ul class="business_catgnav wow fadeInDown">
+            @foreach (var item in Model.Take(1))
+            {
+                <li>
+                    <figure class="bsbig_fig">
+                        <a href=@Url.Action("Single_page", "Home", new { id = item.PageID }) class="featured_img"> <img alt="" src=@Url.Content(item.ImagePath)> <span class="overlay"></span> </a>
+                        <figcaption> <a href=@Url.Action("Single_page", "Home", new { id = item.PageID })>@item.PageTitle</a> </figcaption>
+                        <p>@item.ShortDescription...</p>
+                    </figure>
+                </li>
+            }
+        </ul>
+        <ul class="spost_nav">
+            @foreach (var item in Model.Skip(1).Take(4))
+            {
+                <li>
+                    <div class="media wow fadeInDown">
+                        <a href=@Url.Action("Single_page", "Home", new { id = item.PageID }) class="media-left"> <img alt="" src=@Url.Content(item.ImagePath)> </a>
+                        <div class="media-body"> <a href=@Url.Action("Single_page", "Home", new { id = item.PageID }) class="catg_title"> @item.PageTitle</a> </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,11 @@
+﻿@model IEnumerable< DAl.PageGroup>
+
+<h2><span>آرشیو خبرها</span></h2>
+<select class="catgArchive">
+    <option>انتخاب گروه خبری</option>
+    @foreach (var item in Model)
+    {
+        <option>@item.GroupTitle</option>
+    }
+</select>
+

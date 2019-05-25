@@ -1,0 +1,14 @@
+﻿@model IEnumerable <DAl.PageGroup>
+
+<div id="navbar" class="navbar-collapse collapse">
+    <ul class="nav navbar-nav main_nav" dir="rtl">
+        <li class="active"><a href="/"><span class="fa fa-home desktop-home"></span><span class="mobile-show">صفحه اصلی</span></a></li>
+        @foreach (var item in Model)
+        {
+            <li><a>@item.GroupTitle</a></li>
+        }
+    </ul>
+</div>
+
+
+

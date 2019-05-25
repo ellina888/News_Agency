@@ -1,0 +1,188 @@
+﻿
+@{
+    ViewBag.Title = "Test";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="col-lg-offset-1 col-lg-10 col-md-offset-2 col-md-8 col-sm-offset-3 col-sm-6 col-xs-12">
+    <br />
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">مشخصات داوطلب</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.Label("نام :", htmlAttributes: new { @class = "control-label" })
+                    @Html.Editor("FirstName", new { htmlAttributes = new { @class = "form-control" } })
+                    @*@Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.Label("نام خانوادگی :", htmlAttributes: new { @class = "control-label" })
+                    @Html.Editor("FirstName", new { htmlAttributes = new { @class = "form-control" } })
+                    @*@Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.Label("کد ملی :", htmlAttributes: new { @class = "control-label" })
+                    @Html.Editor("FirstName", new { htmlAttributes = new { @class = "form-control" } })
+                    @*@Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.Label("نام پدر :", htmlAttributes: new { @class = "control-label" })
+                    @Html.Editor("FirstName", new { htmlAttributes = new { @class = "form-control" } })
+                    @*@Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.Label("محل تولد :", htmlAttributes: new { @class = "control-label" })
+                    @Html.Editor("FirstName", new { htmlAttributes = new { @class = "form-control" } })
+                    @*@Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.Label("تاریخ تولد :", htmlAttributes: new { @class = "control-label" })
+                    @Html.Editor("FirstName", new { htmlAttributes = new { @class = "form-control" } })
+                    @*@Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.Label("پست الکترونیکی :", htmlAttributes: new { @class = "control-label" })
+                    @Html.Editor("FirstName", new { htmlAttributes = new { @class = "form-control" } })
+                    @*@Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.Label("جنسیت :", htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    <label class="radio-inline"><input type="radio" name="optradio">زن</label>
+                    <label class="radio-inline"><input type="radio" name="optradio">مرد</label>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.Label("دین :", htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    <label class="radio-inline"><input type="radio" name="optradio">اسلام</label>
+                    <label class="radio-inline"><input type="radio" name="optradio">مسیحی</label>
+                    <label class="radio-inline"><input type="radio" name="optradio">کلیمی</label>
+                    <label class="radio-inline"><input type="radio" name="optradio">زرتشتی</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h3 class="panel-title">مشخصات تحصیلی</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.Label("مقطع تحصیلی :", htmlAttributes: new { @class = "control-label" })
+                    @*@Html.DropDownList("", null, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @*@Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.Label("پایه تحصیلی :", htmlAttributes: new { @class = "control-label" })
+                    @*@Html.DropDownList("",null, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @*@Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.Label("معدل سال قبل :", htmlAttributes: new { @class = "control-label" })
+                    @Html.Editor("FirstName",  new { htmlAttributes = new { @class = "form-control" } })
+                    @*@Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.Label("نام مدرسه :", htmlAttributes: new { @class = "control-label" })
+                    @Html.Editor("FirstName", new { htmlAttributes = new { @class = "form-control" } })
+                    @*@Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.Label("منطقه :", htmlAttributes: new { @class = "control-label" })
+                    @Html.Editor("FirstName", new { htmlAttributes = new { @class = "form-control" } })
+                    @*@Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.Label("تلفن :", htmlAttributes: new { @class = "control-label" })
+                    @Html.Editor("FirstName", new { htmlAttributes = new { @class = "form-control" } })
+                    @*@Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <h3 class="panel-title">محل سکونت</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.Label("استان :", htmlAttributes: new { @class = "control-label" })
+                    @Html.Editor("FirstName", new { htmlAttributes = new { @class = "form-control",style="" } })
+                    @*@Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.Label("شهرستان :", htmlAttributes: new { @class = "control-label" })
+                    @Html.Editor("FirstName", new { htmlAttributes = new { @class = "form-control" } })
+                    @*@Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.Label("تلفن ثابت :", htmlAttributes: new { @class = "control-label" })
+                    @Html.Editor("FirstName", new { htmlAttributes = new { @class = "form-control" } })
+                    @*@Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.Label("تلفن همراه :", htmlAttributes: new { @class = "control-label" })
+                    @Html.Editor("FirstName", new { htmlAttributes = new { @class = "form-control" } })
+                    @*@Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.Label("آدرس :", htmlAttributes: new { @class = "control-label" })
+                    <textarea name="Comment" class="form-control" rows="2" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا دیدگاه خود را بنویسید')"></textarea>
+                    @*@Html.Editor("FirstName", new { htmlAttributes = new { @class = "form-control" } })*@
+                    @*@Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">بسته ثبت نام</h3>
+        </div>
+        <div class="panel-body">
+            Panel content
+        </div>
+    </div>
+</div>
+
+
+

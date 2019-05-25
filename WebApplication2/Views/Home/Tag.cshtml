@@ -1,0 +1,10 @@
+﻿@model IEnumerable<DAl.PageGroup>
+
+<h2>تگ</h2>
+<ul class="tag_nav">
+    @foreach (var item in Model)
+    {
+        <li><a href="#">@item.GroupTitle</a></li>
+    }
+</ul>
+

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<DAl.Page>
+
+<h2><span>پربیننده ترین</span></h2>
+<br />
+<ul class="spost_nav">
+    @foreach (var item in Model)
+    {
+        <li>
+            <div class="media wow fadeInDown">
+                <a href=@Url.Action("Single_page", "Home", new { id = item.PageID }) class="media-left"> <img alt="" src=@Url.Content(item.ImagePath)> </a>
+                <div class="media-body"> <a href=@Url.Action("Single_page", "Home", new { id = item.PageID }) class="catg_title">@item.PageTitle </a> </div>
+            </div>
+        </li>
+    }
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

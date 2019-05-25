@@ -1,0 +1,133 @@
+﻿@model DAl.Page
+
+@{
+    ViewBag.Title = "حذف " + Model.PageTitle;
+}
+
+
+<div class="col-lg-12">
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading"><h4>از خذف این رکورد مطمئن هستید ؟</h4></div>
+        <div class="panel-body">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PageGroup.GroupTitle)
+                    </dt>
+
+                    <dd class="text-info">
+                        @Html.DisplayFor(model => model.PageGroup.GroupTitle)
+                    </dd>
+
+                    <dd>
+                        <br />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PageTitle)
+                    </dt>
+
+                    <dd class="text-info">
+                        @Html.DisplayFor(model => model.PageTitle)
+                    </dd>
+
+                    <dd>
+                        <br />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ImagePath)
+                    </dt>
+
+                    <dd class="text-info">
+                        <div class="form-group" style="text-align: right">
+                            <img id="blah" src=@Url.Content(Model.ImagePath) alt="your image" style="border-style:dashed;border-width:1px;border-color:gray;vertical-align:middle;width:150px;height:75px" />
+                        </div>
+                    </dd>
+
+                    <dd>
+                        <br />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ShortDescription)
+                    </dt>
+
+                    <dd class="text-info">
+                        @Html.DisplayFor(model => model.ShortDescription)
+                    </dd>
+
+                    <dd>
+                        <br />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Visitor)
+                    </dt>
+
+                    <dd class="text-info">
+                        @Html.DisplayFor(model => model.Visitor)
+                    </dd>
+
+                    <dd>
+                        <br />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ShowingInSlider)
+                    </dt>
+
+                    <dd class="text-info">
+                        @Html.DisplayFor(model => model.ShowingInSlider)
+                    </dd>
+
+                    <dd>
+                        <br />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CreateTime)
+                    </dt>
+
+                    <dd class="text-info">
+                        @Html.DisplayFor(model => model.CreateTime)
+                    </dd>
+
+                    <dd>
+                        <br />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Author)
+                    </dt>
+
+                    <dd class="text-info">
+                        @Html.DisplayFor(model => model.Author)
+                    </dd>
+
+                    <dd>
+                        <br />
+                    </dd>
+
+                </dl>
+            </div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        @Html.ActionLink("بازگشت", "Index", null, htmlAttributes: new { @Class = "btn btn-primary btn-block" })
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <input type="submit" value="خذف" class="btn btn-danger btn-block" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

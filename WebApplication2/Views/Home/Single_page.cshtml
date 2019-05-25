@@ -1,0 +1,81 @@
+﻿@model DAl.Page
+
+@{
+    ViewBag.Title = "Single_page";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+@section right_content
+{
+    <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="right_content">
+            <div class="single_page">
+                <ol class="breadcrumb">
+                    <li><a href=@Url.Action("Index", "Home")>صفحه اصلی</a></li>
+                    <li><a href="#">@Model.PageGroup.GroupTitle</a></li>
+                    @*<li class="active">Mobile</li>*@
+                </ol>
+                <h1>@Model.PageTitle</h1>
+                <div class="post_commentbox"> <a href="#"><i class="fa fa-user"></i>@Model.Author</a> <span dir="rtl"><i class="fa fa-calendar"></i>@DateTime.Now.ToString("dddd dd MMM yyyy")</span> <a href="#"><i class="fa fa-tags"></i>@Model.PageGroup.GroupTitle</a> </div>
+                <div class="single_page_content">
+                    <img class="img-center" src=@Url.Content(Model.ImagePath) alt="">
+                    <p style="text-align:justify">@Html.Raw(Model.Text)</p>
+                </div>
+                <div class="contact_area">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#home">ثبت نظر</a></li>
+                        <li><a data-toggle="tab" href="#menu1">نظرهای خوانندگان</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane fade in active">
+                            <form method="post" action="@Url.Action("Create","PageComments",new {area="AdminPanel"})" class="contact_form">
+                                <h2>دیدگاه</h2>
+                                <p>نشانی ایمیل شما منتشر نخواهد شد. بخش‌های موردنیاز علامت‌گذاری شده‌اند *</p>
+                                @Html.AntiForgeryToken()
+                                @Html.HiddenFor(model => model.PageID)
+                                <input name="Name" class="form-control" type="text" placeholder="نام*"  required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا نام خود را وارد نمایید') ">
+                                <input name="Email" class="form-control" type="email" placeholder="پست الکترونیکی*" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا پست الکترونیکی خود را وارد نمایید')">
+                                <input name="Website" class="form-control" type="url" placeholder="وب سایت">
+                                <textarea name="Comment" class="form-control" cols="30" rows="10" placeholder="دیدگاه*" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا دیدگاه خود را بنویسید')"></textarea>
+                                <input type="submit" value="فرستادن دیدگاه">
+                                <br />
+                            </form>
+                       </div>
+                        <div id="menu1" class="tab-pane fade">
+                            @Html.Action("Comment_Tab", "Home",new {id= Model.PageID})
+                            @*<h3>Menu 1</h3>
+                            <div class="panel panel-default">
+                                <div class="panel-heading"></div>
+                                <div class="panel-body">
+
+                                </div>
+                            </div>
+                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>*@
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+                <div class="social_link">
+                    <ul class="sociallink_nav">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="related_post">
+                    @Html.Action("PagesByGroupId", "Home", new { groupId = Model.GroupID, partialName = "Related_Page", count = 3 })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+

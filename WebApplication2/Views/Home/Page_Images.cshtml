@@ -1,0 +1,18 @@
+﻿@model IEnumerable<DAl.Page>
+
+<div class="single_post_content">
+    <h2><span>Photography</span></h2>
+    <ul class="photograph_nav  wow fadeInDown">
+        @foreach (var item in Model)
+        {
+            <li>
+                <div class="photo_grid">
+                    <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href=@Url.Content(item.ImagePath) title="Photography Ttile 1"> <img src=@Url.Content(item.ImagePath) alt="" /></a> </figure>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+
+
+

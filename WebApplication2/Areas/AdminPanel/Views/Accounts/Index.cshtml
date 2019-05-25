@@ -1,0 +1,47 @@
+﻿@model IEnumerable<DAl.Account>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout.cshtml";
+}
+<div class="col-lg-12">
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading"><h3>لیست کاربران</h3></div>
+        <div class="panel-body">
+            <p>
+                @Html.ActionLink("جدید +", "Create", null, htmlAttributes: new { @Class = "btn btn-success" })
+            </p>
+            <div class="table-responsive">
+
+                <table class="table table-bordered">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Username)
+                        </th>
+                        @*<th>
+                            @Html.DisplayNameFor(model => model.Password)
+                        </th>*@
+                        <th>دستورات</th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Username)
+                            </td>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.Password)
+                            </td>*@
+                            <td>
+                                @Html.ActionLink("ویرایش", "Edit", new { id = item.AccountId }, htmlAttributes: new { @Class = "btn btn-warning" }) |
+                                @Html.ActionLink("خذف", "Delete", new { id = item.AccountId }, htmlAttributes: new { @Class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

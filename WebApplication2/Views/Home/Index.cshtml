@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DAl.Page>
+@{
+    ViewBag.Title = "صفحه اصلی";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+
+<section id="newsSection">
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="latest_newsarea">
+                @Html.Action("Last_Pages", "Home", new { partialName = "News_Sticker", count = 10 })
+                <div class="social_area">
+                    <ul class="social_nav">
+                        <li class="facebook"><a href="#"></a></li>
+                        <li class="twitter"><a href="#"></a></li>
+                        <li class="flickr"><a href="#"></a></li>
+                        <li class="pinterest"><a href="#"></a></li>
+                        <li class="googleplus"><a href="#"></a></li>
+                        <li class="vimeo"><a href="#"></a></li>
+                        <li class="youtube"><a href="#"></a></li>
+                        <li class="mail"><a href="#"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="sliderSection">
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8" dir="ltr">
+            @Html.Action("Last_Pages", "Home", new { partialName = "Page_Slider", count = 5 })
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            @Html.Action("Last_Pages", "Home", new { partialName = "Last_Pages", count = 5 })
+        </div>
+    </div>
+</section>
+@section right_content
+{
+    <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="right_content">
+            @Html.Action("PagesByGroupId", "Home", new { groupId = 1, partialName = "PagesByGroupId_Horizontal" })
+            <div class="fashion_technology_area">
+                <div class="fashion">
+                    @Html.Action("PagesByGroupId", "Home", new { groupId = 1, partialName = "PagesByGroupId_Vertical" })
+                </div>
+                <div class="technology">
+                    @Html.Action("PagesByGroupId", "Home", new { groupId = 1, partialName = "PagesByGroupId_Vertical" })
+                </div>
+            </div>
+            @Html.Action("Last_Pages", "Home", new { partialName = "Page_Images", count = 6 })
+            @Html.Action("PagesByGroupId", "Home", new { groupId = 1, partialName = "PagesByGroupId_Horizontal" })
+        </div>
+    </div>
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+

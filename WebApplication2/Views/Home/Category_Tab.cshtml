@@ -1,0 +1,12 @@
+﻿@model IEnumerable<DAl.PageGroup>
+
+<div role="tabpanel" class="tab-pane active" id="category">
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li class="cat-item"><a href="#">@item.GroupTitle</a></li>
+        }
+    </ul>
+</div>
+
+

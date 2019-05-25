@@ -1,0 +1,12 @@
+﻿@model IEnumerable<DAl.Page>
+
+<span>آخرین اخبار</span>
+<ul id="ticker01" class="news_sticker">
+    @foreach (var item in Model)
+    {
+        <li><a href=@Url.Action("Single_page", "Home", new { id = item.PageID })><img src=@Url.Content(item.ImagePath) alt=""> @item.PageTitle</a></li>
+    }
+</ul>
+
+
+

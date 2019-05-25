@@ -1,0 +1,17 @@
+﻿@model IEnumerable<DAl.Page>
+
+<div class="slick_slider">
+    @foreach (var item in Model)
+    {
+        <div class="single_iteam">
+            <a href=@Url.Action("Single_page", "Home", new { id = item.PageID })> <img src=@Url.Content(item.ImagePath) alt=""></a>
+            <div class="slider_article">
+                <h2><a class="slider_tittle" href=@Url.Action("Single_page", "Home", new { id = item.PageID })>@item.PageTitle</a></h2>
+                <p>@item.ShortDescription...</p>
+            </div>
+        </div>
+    }
+</div>
+
+
+

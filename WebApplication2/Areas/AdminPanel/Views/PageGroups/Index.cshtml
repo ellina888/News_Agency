@@ -1,0 +1,91 @@
+﻿@model IEnumerable<DAl.PageGroup>
+
+@{
+    ViewBag.Title = "لیست گروه خبری";
+}
+<div class="col-lg-12">
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading"><h3>لیست گروه خبری</h3></div>
+        <div class="panel-body">
+            <p>
+                <a id="btnCreate" class="btn btn-success">جدید +</a>
+                @*@Html.ActionLink("جدید +", "Create", null, htmlAttributes: new { @Class = "btn btn-success" ,id="btnCreate"})*@
+            </p>
+            <div class="table-responsive">
+
+                <table class="table table-bordered">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.GroupTitle)
+                        </th>
+                        <th>دستورات</th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GroupTitle)
+                            </td>
+                            <td>
+                                <a class="btn btn-warning" onclick="EditGroup(@item.GroupID)">ویرایش</a> |
+                                <a class="btn btn-danger" onclick="DeleteGroup(@item.GroupID)">حذف</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-6">
+    <div class="modal fade" tabindex="-1" role="dialog" id="my_modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>&nbsp;
+                    <h4 class="modal-title" id="my_modal_title"> title</h4>
+                </div>
+                <div class="modal-body" id="my_modal_body">
+
+                </div>
+                <div class="modal-footer" id="my_modal_footer">
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script>
+
+    $("#btnCreate").click(function () {
+        $.get("/AdminPanel/PageGroups/Create", function (result) {
+            $("#my_modal").modal();
+            $("#my_modal_title").html(" گروه خبری جدید ");
+            $("#my_modal_body").html(result);
+        });
+    });
+
+    function EditGroup(id) {
+        $.get("/AdminPanel/PageGroups/Edit/"+id, function (result) {
+            $("#my_modal").modal();
+            $("#my_modal_title").html("ویرایش گروه خبری");
+            $("#my_modal_body").html(result);
+        });
+    }
+
+    function DeleteGroup(id) {
+        $.get("/AdminPanel/PageGroups/Delete/"+id, function (result) {
+            $("#my_modal").modal();
+            $("#my_modal_title").html("از خذف این رکورد مطمئن هستید ؟");
+            $("#my_modal_body").html(result);
+        });
+    }
+</script>

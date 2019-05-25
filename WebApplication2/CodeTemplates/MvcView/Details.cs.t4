@@ -1,0 +1,127 @@
+﻿<#@ template language="C#" HostSpecific="True" #>
+<#@ output extension=".cshtml" #>
+<#@ include file="Imports.include.t4" #>
+@model <#= ViewDataTypeName #>
+<#
+// The following chained if-statement outputs the file header code and markup for a partial view, a view using a layout page, or a regular view.
+if(IsPartialView) {
+#>
+
+<#
+} else if(IsLayoutPageSelected) {
+#>
+
+@{
+    ViewBag.Title = "<#= ViewName#>";
+<#
+if (!String.IsNullOrEmpty(LayoutPageFile)) {
+#>
+    Layout = "<#= LayoutPageFile#>";
+<#
+}
+#>
+}
+
+<#
+} else {
+#>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title><#= ViewName #></title>
+</head>
+<body>
+<#
+    PushIndent("    ");
+}
+#>
+<div class="col-lg-12">
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading"><h3>جزئیات</h3></div>
+        <div class="panel-body">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+				<dl class="dl-horizontal">
+<#
+foreach (PropertyMetadata property in ModelMetadata.Properties) {
+    if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey) {
+#>
+<#
+        // We do not want to show any association properties for which there is
+        // no associated foreign key.
+        if (property.IsAssociation && GetRelatedModelMetadata(property) == null) {
+            continue;
+        }
+#>
+        <dt>
+            @Html.DisplayNameFor(model => model.<#= GetValueExpression(property) #>)
+        </dt>
+
+        <dd class="text-info">
+            @Html.DisplayFor(model => model.<#= GetValueExpression(property) #>)
+        </dd>
+
+		<dd>
+            <br />
+        </dd>
+
+<#
+    }
+}
+#>
+    </dl>
+            </div>
+
+<#
+string pkName = GetPrimaryKeyName();
+if (pkName != null) {
+#>
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.ActionLink("بازگشت", "Index", null, htmlAttributes: new { @Class = "btn btn-primary btn-block" })
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.ActionLink("ویرایش", "Edit", new { id = Model.<#= pkName #> }, htmlAttributes: new { @Class = "btn btn-warning btn-block" })
+                </div>
+            </div>
+<#
+} else {
+#>
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.ActionLink("بازگشت", "Index", null, htmlAttributes: new { @Class = "btn btn-primary btn-block" })
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    @Html.ActionLink("ویرایش", "Edit", new { /* id = Model.PrimaryKey */ }, htmlAttributes: new { @Class = "btn btn-warning btn-block" })
+                </div>
+            </div>
+<#
+}
+#>
+        </div>
+    </div>
+</div>
+<#
+// The following code closes the tag used in the case of a view using a layout page and the body and html tags in the case of a regular view page
+#>
+<#
+if(!IsPartialView && !IsLayoutPageSelected) {
+    ClearIndent();
+#>
+</body>
+</html>
+<#
+}
+#>
+<#@ include file="ModelMetadataFunctions.cs.include.t4" #>

@@ -1,0 +1,139 @@
+﻿@model DAl.Page
+
+@{
+    ViewBag.Title = "خبر جدید";
+}
+
+
+@using (Html.BeginForm("Create","Pages",FormMethod.Post,new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="col-lg-12">
+        <br />
+        <div class="panel panel-default">
+            <div class="panel-heading"><h3>خبر جدید</h3></div>
+            <div class="panel-body">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    @Html.LabelFor(model => model.PageGroup.GroupTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            @Html.DropDownList("GroupID", null, htmlAttributes: new { @class = "form-control", style = "Height:40px" })
+                            @Html.ValidationMessageFor(model => model.GroupID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-12 col-xs-12" })
+                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3 class="panel-title" style="font-size: 14px; padding-bottom: 9px; margin: 10px 0 10px; border-bottom: 1px solid #eee;">عکس خبر </h3>
+                                    <div class="col-lg-12">
+                                        <div class="form-group" style="text-align: right">
+                                            <img id="blah" alt="your image" style="border-style:dashed;border-width:1px;border-color:gray;vertical-align:middle;" />@*width:120px;height:150px*@
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <input type='file' name="imgInp" id="imgInp" style="width: 100%;" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @Html.LabelFor(model => model.PageTitle, htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-12 col-xs-12" })
+                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.PageTitle, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @Html.LabelFor(model => model.ShortDescription, htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-12 col-xs-12" })
+                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.ShortDescription, new { htmlAttributes = new { @class = "form-control"} })
+                            @Html.ValidationMessageFor(model => model.ShortDescription, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-12 col-xs-12" })
+                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @Html.LabelFor(model => model.ShowingInSlider, htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-12 col-xs-12" })
+                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.ShowingInSlider)
+                            @Html.ValidationMessageFor(model => model.ShowingInSlider, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @Html.LabelFor(model => model.Author, htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-12 col-xs-12" })
+                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Author, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="col-lg-offset-2 col-lg-2 col-md-offset-2 col-md-2 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <input type="submit" value="ایجاد" class="btn btn-success btn-block" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="col-lg-offset-2 col-lg-2 col-md-offset-2 col-md-2 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            @Html.ActionLink("بازگشت", "Index", null, htmlAttributes: new { @Class = "btn btn-primary btn-block" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function () {
+        readURL(this);
+    });
+
+</script>
+
+
+
+
+

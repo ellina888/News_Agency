@@ -1,0 +1,50 @@
+﻿@model IEnumerable<DAl.Page>
+@using GridMvc.Html
+
+@{
+    ViewBag.Title = "لیست خبر ها";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-12">
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading"><h3>لیست خبر ها</h3></div>
+        <div class="panel-body">
+            <p>
+                @Html.ActionLink("خبر جدید +", "Create", null, htmlAttributes: new { @Class = "btn btn-success" })
+            </p>
+
+            @Html.Grid(Model).Columns(columns =>
+            {
+                columns.Add(col => col.PageGroup.GroupTitle).Titled(Html.DisplayNameFor(model => model.PageGroup.GroupTitle).ToString()).Filterable(true).Sortable(true); ;
+                columns.Add(col => col.PageTitle).Titled(Html.DisplayNameFor(model => model.PageTitle).ToString());
+                columns.Add(col => col.ImagePath).Titled(Html.DisplayNameFor(model => model.ImagePath).ToString())
+                .Encoded(false).Sanitized(false).RenderValueAs(
+                    @<div class="col-lg-12">
+                        <div class="form-group" style="text-align: right;">
+                            <img id="blah" src=@Url.Content(item.ImagePath) alt="your image" style="border-style:dashed;border-width:1px;border-color:gray;vertical-align:middle;width:150px;height:75px" />
+                        </div>
+                    </div>).Filterable(false).Sortable(false);
+                columns.Add(col => col.Author).Titled(Html.DisplayNameFor(model => model.Author).ToString());
+                columns.Add(col => col.Visitor).Titled(Html.DisplayNameFor(model => model.Visitor).ToString());
+                //columns.Add(col => col.ShowingInSlider).Titled(Html.DisplayNameFor(model => model.ShowingInSlider).ToString());
+                columns.Add(col => col.CreateTime).Titled(Html.DisplayNameFor(model => model.CreateTime).ToString()).Encoded(false).Sanitized(false).RenderValueAs(col => @<p style="white-space:nowrap">@String.Format("{0:dddd dd MMM yyyy}", col.CreateTime) <br /><br /> ساعت @String.Format("{0:HH:mm:ss}", col.CreateTime)</p>);
+                columns.Add().Titled("دستورات").Encoded(false).Sanitized(false).RenderValueAs(col =>
+                    @<p style="white-space:nowrap">
+                        <a class="btn btn-sm btn-warning" href="@Url.Action("Edit","Pages",new { area ="AdminPanel",id=col.PageID})"><i class="glyphicon glyphicon-edit"></i></a> |
+                        <a class="btn btn-sm btn-info" href="@Url.Action("Details","Pages",new { area ="AdminPanel",id=col.PageID})"><i class="glyphicon glyphicon-info-sign"></i></a> |
+                        <a class="btn btn-sm btn-danger" href="@Url.Action("Delete","Pages",new { area ="AdminPanel",id=col.PageID})"><i class="glyphicon glyphicon-trash"></i></a>
+                    </p>);
+            }).Sortable(true).WithPaging(5)
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    //$("Grid:lang(persian)")
+</script>
+
